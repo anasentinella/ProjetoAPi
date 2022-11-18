@@ -15,7 +15,7 @@ public class Cliente {
     @Column
     private String email;
 
-    public int getcodigo() {
+    public int getCodigo() {
         return codigo;
     }
 

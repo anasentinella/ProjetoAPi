@@ -21,6 +21,9 @@ public interface CLiRepository  extends JpaRepository<Cliente, Integer> {
     @Query (value = "Select a from Cliente a Where a.email like %?1%")
     public List<Cliente>findByEmailLetras(String email);
 
+    @Query (value="SELECT a from Cliente a where a.nome LIKE ?1% and a.email LIKE ?2%")
+    List<Cliente> findByInicialNomeEmail(String nome, String email);
+
 
 
 }

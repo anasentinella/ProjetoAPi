@@ -1,8 +1,6 @@
 package com.example.ProjetoJavaAPi.Controller;
 
 
-
-
 import com.example.ProjetoJavaAPi.Model.Cliente;
 import com.example.ProjetoJavaAPi.Repository.CLiRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +13,7 @@ import java.util.List;
 @RequestMapping("/apiCliente")
 public class ClienteControler {
     @Autowired
-   CLiRepository clRepo;
+    CLiRepository clRepo;
 
     @GetMapping("/todos")
     public List<Cliente> buscartodos() {
@@ -41,8 +39,9 @@ public class ClienteControler {
     public List<Cliente> buscarporCodigo(@PathVariable(name = "codigo") int codigo) {
         return clRepo.findBycodigo(codigo);
     }
+
     @GetMapping("/nome/{nome}")
-    public List<Cliente> buscarporNome(@PathVariable(name = "nome") String nome ) {
+    public List<Cliente> buscarporNome(@PathVariable(name = "nome") String nome) {
         return clRepo.findByNome(nome);
     }
 
@@ -50,6 +49,7 @@ public class ClienteControler {
     public List<Cliente> buscarporEmail(@PathVariable(name = "email") String email) {
         return clRepo.findByEmail(email);
     }
+
     @GetMapping("/nomeEspecial/{nome}")
     public List<Cliente> findByLetras(@PathVariable(name = "nome") String nome) {
         return clRepo.findByLetra(nome);
@@ -59,9 +59,16 @@ public class ClienteControler {
     public List<Cliente> findByCodigomaior(@PathVariable(name = "codigo") int codigo) {
         return clRepo.findByCodMaior(codigo);
     }
+
     @GetMapping("/EmailEspecial/{email}")
     public List<Cliente> findByEmailInicial(@PathVariable(name = "email") String email) {
         return clRepo.findByEmailLetras(email);
     }
 
+    @GetMapping(value = "/InicialNomeEmail/{nome}/{email}")
+    public List<Cliente> findByInicialNomeEmail
+            (@PathVariable(value = "nome") String nome,
+             @PathVariable(value = "email") String email) {
+        return clRepo.findByInicialNomeEmail(nome, email);
+    }
 }

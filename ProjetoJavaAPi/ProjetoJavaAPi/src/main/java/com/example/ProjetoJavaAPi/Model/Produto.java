@@ -19,11 +19,11 @@ public class Produto {
     @Column
     private Double preco;
 
-    public int getcodigo() {
+    public int getcodigop() {
         return codigo;
     }
 
-    public void setCodigo(int codigo) {
+    public void setCodigop(int codigo) {
         this.codigo = codigo;
     }
 
